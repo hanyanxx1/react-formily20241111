@@ -5,7 +5,7 @@ console.log(observableValues);
 console.log(observableValues.username);
 console.log(observableValues.home);
 console.log(observableValues.home);
-/* autorun(() => {
+autorun(() => {
   console.log(observableValues.username);
-})
-observableValues.username = 'jiagou'; */
+});
+observableValues.username = "jiagou";
