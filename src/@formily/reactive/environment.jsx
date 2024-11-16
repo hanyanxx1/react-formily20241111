@@ -4,3 +4,5 @@ export const RawProxy = new WeakMap();
 export const ProxyRaw = new WeakMap();
 export const RawReactionsMap = new WeakMap();
 export const ReactionStack = [];
+export const MakeObservableSymbol = Symbol("MakeObservableSymbol");
+export const RawShallowProxy = new WeakMap();
