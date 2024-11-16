@@ -1,11 +1,4 @@
-import { observable, Tracker } from "./@formily/reactive";
-const values = { username: "zhufeng", home: { name: "beijing" } };
-const observableValues = observable(values);
-const scheduler = () => {
-  console.log("forceUpdate");
-};
-const tracker = new Tracker(scheduler);
-tracker.track(() => {
-  console.log(observableValues.username);
-});
-observableValues.username = "jiagou";
+import React from "react";
+import { createRoot } from "react-dom/client";
+import Counter from "./Counter";
+createRoot(document.getElementById("root")).render(<Counter />);
