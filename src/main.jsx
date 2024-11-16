@@ -1,18 +1,11 @@
-import { observable, autorun, define } from "./@formily/reactive";
-const form = {
-  values: { username: { value: "zhangfeng" } },
-  fields: { username: { name: "用户名" } },
+import { observable, Tracker } from "./@formily/reactive";
+const values = { username: "zhufeng", home: { name: "beijing" } };
+const observableValues = observable(values);
+const scheduler = () => {
+  console.log("forceUpdate");
 };
-
-define(form, {
-  values: observable,
-  fields: observable.shallow,
+const tracker = new Tracker(scheduler);
+tracker.track(() => {
+  console.log(observableValues.username);
 });
-
-autorun(() => {
-  console.log(form.values, form.values.username, form.values.username.value);
-  console.log(form.fields, form.fields.username, form.fields.username.name);
-});
-
-form.values.username.value = "jiagou";
-form.fields.username.name = "密码";
+observableValues.username = "jiagou";

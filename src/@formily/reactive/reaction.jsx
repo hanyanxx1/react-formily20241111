@@ -1,3 +1,4 @@
+import { isFn } from "./checkers";
 import { RawReactionsMap, ReactionStack } from "./environment";
 
 const addRawReactionsMap = (target, key, reaction) => {
@@ -38,7 +39,11 @@ const runReactions = (target, key) => {
   const reactions = getReactionsFromTargetKey(target, key);
   if (reactions) {
     for (let reaction of reactions) {
-      reaction();
+      if (isFn(reaction.scheduler)) {
+        reaction.scheduler(reaction);
+      } else {
+        reaction();
+      }
     }
   }
 };

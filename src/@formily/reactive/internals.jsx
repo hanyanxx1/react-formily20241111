@@ -44,7 +44,7 @@ const createNormalProxy = (target, shallow) => {
 };
 export const createAnnotation = (maker) => {
   const annotation = (target) => {
-    console.log("aaa");
+    return maker({ value: target });
   };
   if (isFn(maker)) {
     annotation[MakeObservableSymbol] = maker;
