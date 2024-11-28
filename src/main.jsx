@@ -1,4 +1,16 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
-import Counter from "./Counter";
-createRoot(document.getElementById("root")).render(<Counter />);
+import { createForm } from "./@formily/core";
+const form = createForm({
+  values: {
+    username: "zhufeng",
+  },
+});
+
+console.log(form);
+
+const field = form.createField({
+  name: "username",
+  title: "用户名",
+  value: "jiagou",
+});
+
+console.log(field);
