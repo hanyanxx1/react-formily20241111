@@ -1,6 +1,7 @@
 import { define, observable } from "../../reactive";
 import { Field } from "./Field";
 import { FormPath } from "../../shared";
+import { batchSubmit } from "../shared/internals";
 
 export class Form {
   values = {};
@@ -24,7 +25,7 @@ export class Form {
   }
 
   makeValues() {
-    this.values = this.props.values;
+    this.values = Object.assign({}, this.props.values);
   }
 
   createField(props) {
@@ -32,4 +33,15 @@ export class Form {
     new Field(address, props, this);
     return this.fields[address.entire];
   }
+
+  setValuesIn = (pattern, value) => {
+    this.values[pattern.entire] = value;
+  };
+
+  getValuesIn = (pattern) => {
+    return this.values[pattern.entire];
+  };
+  submit = (onSubmit) => {
+    return batchSubmit(this, onSubmit);
+  };
 }

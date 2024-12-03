@@ -1,16 +1,5 @@
-import { createForm } from "./@formily/core";
-const form = createForm({
-  values: {
-    username: "zhufeng",
-  },
-});
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
 
-console.log(form);
-
-const field = form.createField({
-  name: "username",
-  title: "用户名",
-  value: "jiagou",
-});
-
-console.log(field);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
